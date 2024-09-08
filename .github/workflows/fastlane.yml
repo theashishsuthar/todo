@@ -1,0 +1,49 @@
+name: Fastlane CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.5
+
+      - name: Install dependencies
+        run: |
+          gem install fastlane -NV
+
+      - name: Build and Test iOS
+        working-directory: ios
+        run: fastlane test
+
+      - name: Build and Release iOS
+        working-directory: ios
+        run: fastlane release
+        env:
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+          FASTLANE_USER: ${{ secrets.APPLE_ID }}
+          FASTLANE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+
+      - name: Build and Test Android
+        working-directory: android
+        run: fastlane test
+
+      - name: Build and Release Android
+        working-directory: android
+        run: fastlane release
+        env:
+          JSON_KEY_DATA: ${{ secrets.GOOGLE_PLAY_JSON_KEY }}

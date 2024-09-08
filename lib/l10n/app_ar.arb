@@ -1,0 +1,22 @@
+
+
+  {
+    "todoList": "قائمة المهام",
+    "loading": "جار التحميل...",
+    "addTodo": "إضافة مهمة",
+    "updateTodo": "تحديث المهمة",
+    "deleteTodo": "حذف المهمة",
+    "confirmDelete": "هل أنت متأكد أنك تريد حذف هذه المهمة؟",
+    "yes": "نعم",
+    "no": "لا",
+    "title": "مهمات",
+    "description": "الوصف",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "completed": "مكتملة",
+    "incomplete": "غير مكتملة",
+    "errorOccurred": "حدث خطأ",
+    "noTodos": "لا توجد مهام بعد. أضف بعضها!",
+    "enterTitle": "أدخل العنوان",
+    "enterDescription": "أدخل الوصف"
+  }
